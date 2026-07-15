@@ -1,0 +1,144 @@
+/* --- src/pages/MessageReceived.css --- */
+
+/* Centers the entire page content precisely on the screen */
+.message-received-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh; /* Accounts for fixed navbar */
+  text-align: center;
+}
+
+/* Card-level positioning and spacing */
+.message-card {
+  max-width: 580px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 30px;
+  gap: 30px;
+}
+
+/* The concentric circle halo effect for the success icon */
+.icon-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.success-icon-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(157, 78, 221, 0.4) 0%, rgba(157, 78, 221, 0) 70%);
+  border: 4px solid var(--neon-purple);
+  opacity: 0.8;
+  filter: blur(10px);
+  animation: pulse-halo 2.5s infinite ease-in-out;
+}
+
+.success-icon {
+  position: relative;
+  z-index: 2;
+  font-size: 50px;
+  color: #fff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+  animation: icon-float 3s infinite ease-in-out;
+}
+
+/* Replicates the 'NEON PINK SCRIPT GLOW' aesthetic from your brand blueprint */
+.success-headline {
+  font-size: 32px;
+  letter-spacing: 1.5px;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Text layout and color hierarchy */
+.message-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.confirmation-main {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 500;
+  margin: 0;
+}
+
+.confirmation-subtext, .reassurance {
+  font-size: 14px;
+  color: var(--text-muted); /* A5A5C7 */
+  line-height: 1.6;
+  margin: 0;
+}
+
+.reassurance {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Integrated auto-redirection visualization */
+.auto-redirect-notice {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.auto-redirect-notice p {
+  font-size: 13px;
+  color: var(--neon-blue); /* 00D2FF */
+  letter-spacing: 0.5px;
+  margin: 0 0 15px 0;
+  font-weight: bold;
+}
+
+.loading-bar-wrapper {
+  width: 100%;
+  height: 6px;
+  background-color: rgba(6, 6, 12, 0.6); /* background dark */
+  border-radius: 4px;
+  border: 1px solid rgba(157, 78, 221, 0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--gradient-glow); /* Linear-gradient(135deg, #00D2FF, #9D4EDD) */
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
+  width: 0%; /* Fills dynamically with animation */
+  animation: fill-loading-bar 10s linear forwards; /* Must match useEffect timer */
+}
+
+/* --- Required Keyframe Animations --- */
+@keyframes pulse-halo {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; filter: blur(10px); }
+  50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; filter: blur(15px); }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; filter: blur(10px); }
+}
+
+@keyframes icon-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes fill-loading-bar {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
