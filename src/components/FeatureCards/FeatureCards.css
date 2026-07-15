@@ -1,0 +1,77 @@
+/* --- src/components/FeatureCards/FeatureCards.css --- */
+
+/* Basic layout and z-index ordering for the text over glow effect */
+.reusable-feature-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100px;
+  position: relative;
+  overflow: hidden; /* Contains any glow overflow */
+}
+
+/* Base style for the repeated 'FeatureCard' elements themselves */
+.highlight-card {
+  z-index: 2; /* Sits on top of the generic layout */
+  background: rgba(13, 13, 33, 0.7); /* Match the cosmic card style from App.css */
+  border: 1px solid rgba(157, 78, 221, 0.2);
+  border-radius: 12px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+}
+
+/* The reusable structure to place the glow underneath the title */
+.card-title-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+  width: 100%;
+  z-index: 2; /* Sits below the text but over the background */
+}
+
+/* The radial 'cloud' glow definition */
+.card-title-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 60px;
+  border-radius: 50%;
+  filter: blur(25px);
+  opacity: 0.6;
+  z-index: 1; /* Sits *underneath* the text in this wrapper's stack */
+  pointer-events: none;
+}
+
+/* Individual color configurations (using CSS Variables for reusability) */
+.glow-color-cyan { --card-glow: rgba(0, 210, 255, 0.8); }
+.glow-color-orange { --card-glow: rgba(255, 94, 0, 0.8); }
+.glow-color-magenta { --card-glow: rgba(255, 0, 127, 0.8); }
+.glow-color-gold { --card-glow: rgba(255, 184, 0, 0.8); }
+
+/* Apply the correct color based on the variable */
+.card-title-glow[class*="glow-color-"] {
+  background: radial-gradient(circle, var(--card-glow) 0%, rgba(0, 210, 255, 0) 70%);
+}
+
+/* Text styles (ensure stacking and shadows keep text readable) */
+.reusable-feature-card h3 {
+  position: relative;
+  font-size: 16px;
+  margin: 0;
+  letter-spacing: 1px;
+  color: #fff;
+  z-index: 2; /* Ensures text is always on top */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.reusable-feature-card p {
+  font-size: 13px;
+  color: #a5a5c7; /* A generic muted variable or explicit color */
+  line-height: 1.6;
+  margin: 0;
+  z-index: 2;
+}
