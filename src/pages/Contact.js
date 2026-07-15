@@ -17,7 +17,7 @@ function Contact() {
           {/* Hidden Core Salesforce Structural Parameters */}
           <input type="hidden" name="oid" value="00D6g0000053mSQ" />
           {/* Note: Update the value below to your live site domain once deployed online */}
-          <input type="hidden" name="retURL" value="http://localhost:3000" />
+          <input type="hidden" name="retURL" value="www.bradleycondon.com" />
           <input type="hidden" id="lead_source" name="lead_source" value="Web" />
 
           {/* Optional Debugging Lines (Uncomment value parameters during local sandbox tests if needed) */}
