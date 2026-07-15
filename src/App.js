@@ -6,6 +6,7 @@ import About from './pages/About';
 import Certifications from './pages/Certifications';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
+import ThankYouPage from './pages/MessageReceived'; // Already imported here
 import './App.css';
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
           <Route path="/certifications" element={<Certifications />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
+          {/* NEW: Added route to display the Message Received page */}
+          <Route path="/received" element={<ThankYouPage />} />
         </Routes>
       </div>
     </Router>
