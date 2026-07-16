@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -23,6 +24,7 @@ function App() {
           {/* NEW: Added route to display the Message Received page */}
           <Route path="/received" element={<ThankYouPage />} />
         </Routes>
+        <SpeedInsights />
       </div>
     </Router>
   );
