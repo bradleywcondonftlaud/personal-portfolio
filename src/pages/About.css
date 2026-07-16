@@ -68,9 +68,7 @@
   line-height: 1.5; 
 }
 
-/* --- Responsive Layout Configurations --- */
-@media (max-width: 900px) { 
-  .about-layout { 
-    grid-template-columns: 1fr; 
-  } 
-}
+ 
+.about-layout { 
+grid-template-columns: 1fr 2fr; 
+} 
