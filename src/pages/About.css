@@ -1,11 +1,76 @@
-.about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; align-items: start; }
-.about-bio p { line-height: 1.8; color: var(--text-muted); font-size: 15px; }
-.about-timeline h3 { margin-bottom: 30px; }
-.timeline-container { position: relative; border-left: 2px solid var(--neon-purple); padding-left: 30px; margin-left: 10px; }
-.timeline-item { position: relative; margin-bottom: 30px; }
-.timeline-badge { position: absolute; left: -63px; top: 0; background: var(--bg-dark); border: 2px solid var(--neon-blue); color: var(--neon-blue); padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; box-shadow: 0 0 8px rgba(0,210,255,0.4); }
-.timeline-content { padding: 15px 20px; }
-.timeline-content h4 { margin: 0 0 5px 0; color: #fff; font-size: 16px; }
-.timeline-content h5 { margin: 0 0 10px 0; color: var(--neon-purple); font-size: 13px; }
-.timeline-content p { margin: 0; font-size: 13px; color: var(--text-muted); line-height: 1.5; }
-@media (max-width: 900px) { .about-layout { grid-template-columns: 1fr; } }
+/* --- Timeline Layout Configuration --- */
+.about-timeline h3 { 
+  margin-bottom: 30px; 
+}
+
+.timeline-container { 
+  position: relative; 
+  border-left: 2px solid var(--neon-purple); 
+  padding-left: 30px; 
+  margin-left: 15px; /* Slightly adjusted to accommodate the anchor indicator */
+}
+
+.timeline-item { 
+  position: relative; 
+  margin-bottom: 40px; 
+}
+
+/* Decorative anchor node sitting directly on the vertical timeline track */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -37px; /* Aligns perfectly with the container's left border track */
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-dark);
+  border: 2px solid var(--neon-blue);
+  box-shadow: 0 0 8px var(--neon-blue);
+  z-index: 2;
+}
+
+/* Cleaned up badge layout to let long text ranges wrap naturally without clipping */
+.timeline-badge { 
+  display: inline-block;
+  margin-bottom: 12px;
+  background: rgba(0, 210, 255, 0.1); 
+  border: 1px solid rgba(0, 210, 255, 0.4); 
+  color: var(--neon-blue); 
+  padding: 4px 12px; 
+  border-radius: 4px; 
+  font-size: 12px; 
+  font-weight: bold; 
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.15); 
+  letter-spacing: 0.5px;
+}
+
+.timeline-content { 
+  padding: 15px 20px; 
+}
+
+.timeline-content h4 { 
+  margin: 0 0 5px 0; 
+  color: #fff; 
+  font-size: 16px; 
+}
+
+.timeline-content h5 { 
+  margin: 0 0 10px 0; 
+  color: var(--neon-purple); 
+  font-size: 13px; 
+}
+
+.timeline-content p { 
+  margin: 0; 
+  font-size: 13px; 
+  color: var(--text-muted); 
+  line-height: 1.5; 
+}
+
+/* --- Responsive Layout Configurations --- */
+@media (max-width: 900px) { 
+  .about-layout { 
+    grid-template-columns: 1fr; 
+  } 
+}
