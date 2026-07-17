@@ -6,23 +6,23 @@ function Home() {
 
     const featureCardsData = [
         { 
-        title: "SALESFORCE EXPERT", 
-        description: "Certified professional with hands-on experience delivering Salesforce solutions that drive adoption and maximize platform utility.", 
+        title: "INNOVATIVE SOLUTION BUILDER", 
+        description: "I enjoy looking beyond the obvious solution and finding smarter, more creative ways to solve business challenges with Salesforce. By combining automation, thoughtful data architecture, custom interfaces, and emerging technologies, I build solutions that improve efficiency while creating better experiences for both users and customers.", 
         glowColor: "cyan" 
         },
         { 
-        title: "DREAMFORCE SPEAKER", 
-        description: 'Presented "Building Personal Projects to Land Your Next Salesforce Role" live at Dreamforce, showcasing declarative automation and career paths.', 
+        title: "HUMAN-CENTERED BUILDER", 
+        description: "I design Salesforce experiences around the people who will use them every day. Whether I am building a Flow, configuring Service Cloud, developing a custom interface, or improving an existing process, I focus on reducing friction, increasing adoption, and helping users work with greater confidence.", 
         glowColor: "orange" 
         },
         { 
-        title: "COMMUNITY BUILDER", 
-        description: "Active co-leader of the Serviceblazer Community Group, passionate about resource sharing and supporting emerging ecosystem talent.", 
+        title: "COMMUNITY-DRIVEN LEADER", 
+        description: "Community has played an important role in my Salesforce journey, and I believe strongly in helping others grow alongside me. As a Serviceblazer Community Group co-leader, speaker, and content contributor, I share practical knowledge, encourage collaboration, and help create spaces where people feel welcomed, supported, and inspired.", 
         glowColor: "magenta" 
         },
         { 
-        title: "DETAIL ORIENTED", 
-        description: "Deeply focused on clean, high-fidelity layouts, precise UX design configurations, and robust process automation engineering.", 
+        title: "RESOURCEFUL AND ADAPTABLE", 
+        description: "I am not afraid to step into an unfamiliar challenge, learn what is needed, and find a way forward. I approach new tools, complex requirements, and unexpected obstacles with curiosity and persistence, using experimentation, research, and continuous improvement to turn uncertainty into practical results.", 
         glowColor: "gold" 
         },
     ];
