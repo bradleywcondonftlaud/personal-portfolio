@@ -1,5 +1,4 @@
 import React from 'react';
-import profileImg from '../assets/profile.png';
 import FeatureCard from '../components/FeatureCards/FeatureCard';
 import './Home.css';
 
@@ -40,7 +39,7 @@ function Home() {
           <a href="/contact" className="btn-primary">LET'S CONNECT &rarr;</a>
         </div>
         <div className="hero-image-container">
-          <img src={profileImg} alt="Bradley Condon" className="hero-image" />
+          <img src="/homepage.gif" alt="Bradley Condon" className="hero-image" />
         </div>
       </div>
 
