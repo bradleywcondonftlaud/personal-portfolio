@@ -29,8 +29,7 @@ function Home() {
 
   return (
     <div className="container home-container">
-      {/* Hero Section */}
-      <div className="hero-section">
+      <div className="homepage-grid">
         <div className="hero-text">
           <p className="hero-subtitle">HELLO, I'M</p>
           <h1 className="hero-name">BRADLEY CONDON</h1>
@@ -41,27 +40,20 @@ function Home() {
         <div className="hero-image-container">
           <img src="/homepage.gif" alt="Bradley Condon" className="hero-image" />
         </div>
+
+        <div className="highlights-grid" aria-label="Professional highlights">
+          {featureCardsData.map((cardData) => (
+            <FeatureCard
+              key={cardData.title}
+              title={cardData.title}
+              description={cardData.description}
+              glowColor={cardData.glowColor}
+            />
+          ))}
+        </div>
       </div>
-
-        {/* Highlights & Experience Badges */}
-            {/* NEW: The section remains the same, but the population logic is reusable */}
-            <div className="highlights-grid">
-                
-                {/* NEW: We now automatically generate cards using the mapping logic below */}
-                {featureCardsData.map((cardData, index) => (
-                // Use 'FeatureCard' for each entry. Pass all the data in via Props.
-                // Note the 'key={index}' - React requires a unique key for list items.
-                <FeatureCard 
-                    key={index} 
-                    title={cardData.title} 
-                    description={cardData.description} 
-                    glowColor={cardData.glowColor} 
-                />
-                ))}
-
-            </div>
-            </div>
-        );
-        }
+    </div>
+  );
+}
 
 export default Home;
