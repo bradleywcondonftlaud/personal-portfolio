@@ -24,7 +24,6 @@ body {
 
 /* --- Common UI Components --- */
 .container {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 100px 20px 40px 20px; /* Top padding accommodates the fixed navbar */
   min-height: 85vh;
