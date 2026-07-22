@@ -20,11 +20,6 @@ function Projects() {
       <div className="projects-container">
         <header className="projects-header">
           <h1>Projects</h1>
-
-          <p>
-            A collection of custom applications, Salesforce solutions, and
-            professional projects designed to solve real-world challenges.
-          </p>
         </header>
 
         <section
