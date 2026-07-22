@@ -47,3 +47,22 @@
   color: var(--neon-blue);
   text-shadow: 0 0 8px rgba(0, 210, 255, 0.6);
 }
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar-logo-image {
+  display: block;
+  width: auto;
+  height: 48px;
+  max-width: 260px;
+  object-fit: contain;
+}
