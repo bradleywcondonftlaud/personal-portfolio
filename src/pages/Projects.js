@@ -16,16 +16,13 @@ function Projects() {
   ];
 
   return (
-    <main className="projects-page">
-      <div className="projects-container">
-        <header className="projects-header">
-          <h1>Projects</h1>
+    <div className="container">
+      <h2>Projects</h2>
 
-          <p>
-            A collection of custom applications, Salesforce solutions, and
-            professional projects designed to solve real-world challenges.
-          </p>
-        </header>
+        <p>
+          A collection of custom applications, Salesforce solutions, and
+          professional projects designed to solve real-world challenges.
+        </p>
 
         <section
           className="projects-grid"
@@ -51,7 +48,6 @@ function Projects() {
           ))}
         </section>
       </div>
-    </main>
   );
 }
 

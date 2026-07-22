@@ -3,7 +3,7 @@
   padding: 52px 24px 96px;
 }
 
-.projects-container {
+.container {
   width: min(1180px, 100%);
   margin: 0 auto;
 }
