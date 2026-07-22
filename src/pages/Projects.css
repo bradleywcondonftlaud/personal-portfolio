@@ -1,6 +1,185 @@
-.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; margin-top: 30px; }
-.project-card { display: flex; flex-direction: column; align-items: start; position: relative; }
-.project-badge { font-size: 10px; background: var(--neon-purple); color: #fff; padding: 2px 6px; font-weight: bold; border-radius: 3px; text-transform: uppercase; margin-bottom: 12px; }
-.project-card h3 { margin: 0 0 5px 0; font-size: 20px; color: #fff; }
-.project-tech { font-size: 13px; color: var(--neon-blue); font-weight: 500; margin-bottom: 15px; }
-.project-card p { margin: 0; font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+.projects-page {
+  min-height: 100vh;
+  padding: 52px 24px 96px;
+}
+
+.projects-container {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.projects-header {
+  margin-bottom: 46px;
+}
+
+.projects-header h1 {
+  margin: 0 0 16px;
+  color: #ffffff;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.projects-header p {
+  max-width: 850px;
+  margin: 0;
+  color: var(--text-muted, #a9a6bd);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 64px 72px;
+  align-items: start;
+}
+
+.project-showcase-card {
+  position: relative;
+  width: 100%;
+  padding-bottom: 34px;
+  transition:
+    transform 220ms ease,
+    filter 220ms ease;
+}
+
+.project-image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  border-radius: 22px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(24, 15, 46, 0.95),
+      rgba(5, 12, 24, 0.95)
+    );
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.34),
+    0 0 24px rgba(0, 210, 255, 0.05);
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.project-image-frame::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.07),
+      transparent 32%
+    );
+}
+
+.project-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 350ms ease;
+}
+
+.project-title-pill {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  width: 80%;
+  min-height: 58px;
+  padding: 10px 28px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+  background: #030305;
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.45),
+    0 0 14px rgba(255, 255, 255, 0.04);
+  transform: translateX(-50%);
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.project-title-pill h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(17px, 2vw, 23px);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.project-showcase-card:hover {
+  transform: translateY(-6px);
+}
+
+.project-showcase-card:hover .project-image-frame {
+  border-color: #ffffff;
+  box-shadow:
+    0 24px 50px rgba(0, 0, 0, 0.45),
+    0 0 28px rgba(0, 210, 255, 0.16),
+    0 0 38px rgba(181, 72, 255, 0.1);
+}
+
+.project-showcase-card:hover .project-image {
+  transform: scale(1.025);
+}
+
+.project-showcase-card:hover .project-title-pill {
+  border-color: #ffffff;
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.5),
+    0 0 18px rgba(0, 210, 255, 0.12);
+}
+
+@media screen and (max-width: 850px) {
+  .projects-page {
+    padding: 42px 20px 80px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .project-showcase-card {
+    width: min(620px, 100%);
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .projects-page {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .projects-header {
+    margin-bottom: 36px;
+  }
+
+  .project-image-frame {
+    border-radius: 16px;
+  }
+
+  .project-title-pill {
+    width: 88%;
+    min-height: 52px;
+    padding: 9px 18px;
+  }
+
+  .project-title-pill h2 {
+    font-size: 17px;
+  }
+}

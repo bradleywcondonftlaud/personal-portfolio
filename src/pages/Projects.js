@@ -4,33 +4,54 @@ import './Projects.css';
 function Projects() {
   const projects = [
     {
-      title: "Certification Preparation App",
-      tech: "Salesforce Flow / Email Gateway Integration",
-      desc: "Engineered an automated study utility that systematically delivers customized multi-choice practice curriculum questions directly to mobile hardware via email-to-text platform gateways, streamlining knowledge retention schedules."
+      title: 'Automate This!',
+      image: '/images/automate-this.png',
+      alt: 'Bradley Condon participating in an Automate This interview with Jennifer Lee',
     },
     {
-      title: "Dreamin' Roomie Connect",
-      tech: "Lightning Web Components / Junction Object Schema",
-      desc: "Designed and prototyped a structured workspace application leveraging custom address field mappings and conditional screen logic interfaces to sync spatial accommodation profiles with high platform user adoption rules."
-    }
+      title: "The Dreamin’ Roomie Connect",
+      image: '/images/dreamin-roomie-connect.png',
+      alt: "The Dreamin’ Roomie Connect application login screen",
+    },
   ];
 
   return (
-    <div className="container">
-      <h2>PROJECTS</h2>
-      <p className="hint-text">A collection of custom applications and system solutions engineered to solve technical operational challenges.</p>
-      
-      <div className="projects-grid">
-        {projects.map((proj, idx) => (
-          <div key={idx} className="glow-card project-card">
-            <div className="project-badge">Solution</div>
-            <h3>{proj.title}</h3>
-            <span className="project-tech">{proj.tech}</span>
-            <p>{proj.desc}</p>
-          </div>
-        ))}
+    <main className="projects-page">
+      <div className="projects-container">
+        <header className="projects-header">
+          <h1>Projects</h1>
+
+          <p>
+            A collection of custom applications, Salesforce solutions, and
+            professional projects designed to solve real-world challenges.
+          </p>
+        </header>
+
+        <section
+          className="projects-grid"
+          aria-label="Featured projects"
+        >
+          {projects.map((project) => (
+            <article
+              key={project.title}
+              className="project-showcase-card"
+            >
+              <div className="project-image-frame">
+                <img
+                  className="project-image"
+                  src={project.image}
+                  alt={project.alt}
+                />
+              </div>
+
+              <div className="project-title-pill">
+                <h2>{project.title}</h2>
+              </div>
+            </article>
+          ))}
+        </section>
       </div>
-    </div>
+    </main>
   );
 }
 
