@@ -1,67 +1,126 @@
+/* =========================================================
+   PROJECTS PAGE
+   ========================================================= */
+
 .projects-page {
   min-height: 100vh;
-  padding: 52px 24px 96px;
+
+  /*
+   * The navigation bar is approximately 62px tall.
+   * The additional 48px creates spacing beneath it.
+   */
+  padding: 110px 24px 96px;
+
+  box-sizing: border-box;
+  overflow: visible;
 }
 
-.container {
+.projects-container {
   width: min(1180px, 100%);
   margin: 0 auto;
 }
 
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
 .projects-header {
-  margin-bottom: 46px;
+  margin: 0 0 46px;
 }
 
 .projects-header h1 {
+  display: inline-block;
+
   margin: 0 0 16px;
+  padding: 0;
+
   color: #ffffff;
+
   font-size: clamp(28px, 3vw, 38px);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: 0.02em;
+
   text-transform: uppercase;
+
+  /*
+   * Prevents the heading from being hidden underneath
+   * the fixed navigation when linked to directly.
+   */
+  scroll-margin-top: 110px;
 }
 
 .projects-header p {
   max-width: 850px;
   margin: 0;
+
   color: var(--text-muted, #a9a6bd);
+
   font-size: 15px;
   line-height: 1.7;
 }
 
+
+/* =========================================================
+   PROJECT GRID
+   ========================================================= */
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: 64px 72px;
   align-items: start;
 }
 
+
+/* =========================================================
+   PROJECT CARD
+   ========================================================= */
+
 .project-showcase-card {
   position: relative;
+
   width: 100%;
   padding-bottom: 34px;
+
+  box-sizing: border-box;
+
   transition:
     transform 220ms ease,
     filter 220ms ease;
 }
 
+
+/* =========================================================
+   PROJECT IMAGE
+   ========================================================= */
+
 .project-image-frame {
   position: relative;
+
   width: 100%;
   aspect-ratio: 16 / 10;
+
   overflow: hidden;
+
   border: 2px solid rgba(255, 255, 255, 0.92);
   border-radius: 22px;
+
   background:
     linear-gradient(
       145deg,
       rgba(24, 15, 46, 0.95),
       rgba(5, 12, 24, 0.95)
     );
+
   box-shadow:
     0 18px 42px rgba(0, 0, 0, 0.34),
     0 0 24px rgba(0, 210, 255, 0.05);
+
+  box-sizing: border-box;
+
   transition:
     border-color 220ms ease,
     box-shadow 220ms ease;
@@ -70,8 +129,11 @@
 .project-image-frame::after {
   position: absolute;
   inset: 0;
+
   pointer-events: none;
-  content: '';
+
+  content: "";
+
   background:
     linear-gradient(
       135deg,
@@ -82,30 +144,47 @@
 
 .project-image {
   display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
+
   transition: transform 350ms ease;
 }
+
+
+/* =========================================================
+   PROJECT TITLE PILL
+   ========================================================= */
 
 .project-title-pill {
   position: absolute;
   bottom: 0;
   left: 50%;
   z-index: 2;
+
   display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 80%;
   min-height: 58px;
   padding: 10px 28px;
-  align-items: center;
-  justify-content: center;
+
   border: 2px solid rgba(255, 255, 255, 0.95);
   border-radius: 999px;
+
   background: #030305;
+
   box-shadow:
     0 10px 22px rgba(0, 0, 0, 0.45),
     0 0 14px rgba(255, 255, 255, 0.04);
+
+  box-sizing: border-box;
+
   transform: translateX(-50%);
+
   transition:
     border-color 220ms ease,
     box-shadow 220ms ease;
@@ -113,12 +192,20 @@
 
 .project-title-pill h2 {
   margin: 0;
+
   color: #ffffff;
+
   font-size: clamp(17px, 2vw, 23px);
   font-weight: 700;
   line-height: 1.2;
+
   text-align: center;
 }
+
+
+/* =========================================================
+   HOVER STATES
+   ========================================================= */
 
 .project-showcase-card:hover {
   transform: translateY(-6px);
@@ -126,6 +213,7 @@
 
 .project-showcase-card:hover .project-image-frame {
   border-color: #ffffff;
+
   box-shadow:
     0 24px 50px rgba(0, 0, 0, 0.45),
     0 0 28px rgba(0, 210, 255, 0.16),
@@ -138,14 +226,28 @@
 
 .project-showcase-card:hover .project-title-pill {
   border-color: #ffffff;
+
   box-shadow:
     0 12px 26px rgba(0, 0, 0, 0.5),
     0 0 18px rgba(0, 210, 255, 0.12);
 }
 
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
 @media screen and (max-width: 850px) {
   .projects-page {
-    padding: 42px 20px 80px;
+    /*
+     * Allows additional space in case the mobile navigation
+     * becomes taller than the desktop navigation.
+     */
+    padding: 120px 20px 80px;
+  }
+
+  .projects-header h1 {
+    scroll-margin-top: 120px;
   }
 
   .projects-grid {
@@ -159,14 +261,22 @@
   }
 }
 
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media screen and (max-width: 520px) {
   .projects-page {
-    padding-right: 16px;
-    padding-left: 16px;
+    padding: 112px 16px 72px;
   }
 
   .projects-header {
     margin-bottom: 36px;
+  }
+
+  .projects-header h1 {
+    scroll-margin-top: 112px;
   }
 
   .project-image-frame {
@@ -181,5 +291,27 @@
 
   .project-title-pill h2 {
     font-size: 17px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .project-showcase-card,
+  .project-image-frame,
+  .project-image,
+  .project-title-pill {
+    transition: none;
+  }
+
+  .project-showcase-card:hover {
+    transform: none;
+  }
+
+  .project-showcase-card:hover .project-image {
+    transform: none;
   }
 }
