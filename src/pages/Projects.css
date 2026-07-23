@@ -4,13 +4,7 @@
 
 .projects-page {
   min-height: 100vh;
-
-  /*
-   * The navigation bar is approximately 62px tall.
-   * The additional 48px creates spacing beneath it.
-   */
   padding: 110px 24px 96px;
-
   box-sizing: border-box;
   overflow: visible;
 }
@@ -32,8 +26,7 @@
 
 .projects-header h1 {
   display: inline-block;
-
-  margin: 0 0 16px;
+  margin: 0;
   padding: 0;
 
   color: #ffffff;
@@ -42,50 +35,34 @@
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.02em;
-
   text-transform: uppercase;
 
-  /*
-   * Prevents the heading from being hidden underneath
-   * the fixed navigation when linked to directly.
-   */
   scroll-margin-top: 110px;
-}
-
-.projects-header p {
-  max-width: 850px;
-  margin: 0;
-
-  color: var(--text-muted, #a9a6bd);
-
-  font-size: 15px;
-  line-height: 1.7;
 }
 
 
 /* =========================================================
-   PROJECT GRID
+   FEATURED PROJECT GRID
    ========================================================= */
 
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
   gap: 64px 72px;
   align-items: start;
 }
 
 
 /* =========================================================
-   PROJECT CARD
+   FEATURED PROJECT CARD
    ========================================================= */
 
 .project-showcase-card {
   position: relative;
 
   width: 100%;
-  padding-bottom: 34px;
   padding-top: 10px;
+  padding-bottom: 34px;
 
   box-sizing: border-box;
 
@@ -96,7 +73,7 @@
 
 
 /* =========================================================
-   PROJECT IMAGE
+   FEATURED PROJECT IMAGE
    ========================================================= */
 
 .project-image-frame {
@@ -157,7 +134,7 @@
 
 
 /* =========================================================
-   PROJECT TITLE PILL
+   FEATURED PROJECT TITLE
    ========================================================= */
 
 .project-title-pill {
@@ -200,13 +177,12 @@
   font-size: clamp(17px, 2vw, 23px);
   font-weight: 700;
   line-height: 1.2;
-
   text-align: center;
 }
 
 
 /* =========================================================
-   HOVER STATES
+   FEATURED PROJECT HOVER STATES
    ========================================================= */
 
 .project-showcase-card:hover {
@@ -236,19 +212,492 @@
 
 
 /* =========================================================
+   PROJECT BOARD SECTION
+   ========================================================= */
+
+.project-board-section {
+  margin-top: 110px;
+}
+
+.project-board-header {
+  max-width: 760px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.project-board-header h2 {
+  margin: 0 0 12px;
+
+  color: #ffffff;
+
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  scroll-margin-top: 110px;
+}
+
+.project-board-header p {
+  margin: 0;
+
+  color: var(--text-muted, #aaa7bb);
+
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   LOADING, ERROR, AND EMPTY MESSAGES
+   ========================================================= */
+
+.projects-message {
+  width: min(620px, 100%);
+  margin: 20px auto;
+  padding: 22px 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+
+  color: #d8d5e3;
+  background: rgba(12, 11, 20, 0.82);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.24);
+
+  box-sizing: border-box;
+
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.projects-error {
+  border-color: rgba(255, 107, 129, 0.55);
+
+  color: #ffd9df;
+  background: rgba(66, 18, 31, 0.72);
+}
+
+
+/* =========================================================
+   KANBAN BOARD
+   ========================================================= */
+
+.project-kanban {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 24px;
+  align-items: start;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   KANBAN COLUMNS
+   ========================================================= */
+
+.kanban-column {
+  position: relative;
+
+  min-width: 0;
+  min-height: 440px;
+  padding: 18px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      160deg,
+      rgba(20, 15, 37, 0.94),
+      rgba(7, 10, 19, 0.96)
+    );
+
+  box-shadow:
+    0 18px 44px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  box-sizing: border-box;
+}
+
+.kanban-column::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  height: 4px;
+
+  content: "";
+}
+
+.kanban-column-planned::before {
+  background:
+    linear-gradient(
+      90deg,
+      #7388ff,
+      #a56cff
+    );
+}
+
+.kanban-column-in-progress::before {
+  background:
+    linear-gradient(
+      90deg,
+      #00c8ff,
+      #2fffc7
+    );
+}
+
+.kanban-column-completed::before {
+  background:
+    linear-gradient(
+      90deg,
+      #60e68b,
+      #b7ff68
+    );
+}
+
+
+/* =========================================================
+   KANBAN COLUMN HEADER
+   ========================================================= */
+
+.kanban-column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin: 0 0 20px;
+  padding: 4px 2px 16px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+.kanban-column-header h3 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.kanban-column-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 31px;
+  height: 31px;
+  padding: 0 9px;
+
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 999px;
+
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+
+  box-sizing: border-box;
+
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   KANBAN CARD LIST
+   ========================================================= */
+
+.kanban-cards {
+  display: grid;
+  gap: 16px;
+}
+
+.kanban-empty {
+  margin: 10px 0;
+  padding: 18px 12px;
+
+  border: 1px dashed rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+
+  color: var(--text-muted, #aaa7bb);
+
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+
+/* =========================================================
+   KANBAN PROJECT CARD
+   ========================================================= */
+
+.kanban-card {
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(31, 25, 49, 0.96),
+      rgba(13, 15, 25, 0.98)
+    );
+
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.3);
+
+  transition:
+    transform 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.kanban-card:hover {
+  border-color: rgba(255, 255, 255, 0.34);
+
+  box-shadow:
+    0 17px 34px rgba(0, 0, 0, 0.38),
+    0 0 20px rgba(0, 210, 255, 0.07);
+
+  transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   KANBAN CARD IMAGE
+   ========================================================= */
+
+.kanban-card-image-frame {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  background: #080a12;
+}
+
+.kanban-card-image-frame::after {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  content: "";
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 55%,
+      rgba(5, 6, 12, 0.32)
+    );
+}
+
+.kanban-card-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 300ms ease;
+}
+
+.kanban-card:hover .kanban-card-image {
+  transform: scale(1.035);
+}
+
+
+/* =========================================================
+   KANBAN CARD CONTENT
+   ========================================================= */
+
+.kanban-card-content {
+  padding: 18px;
+}
+
+.kanban-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  min-height: 24px;
+  margin-bottom: 10px;
+}
+
+.kanban-card-number {
+  color: #aaa7bb;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.kanban-card-priority {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 24px;
+  padding: 4px 9px;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+
+  color: #ddd9e8;
+  background: rgba(255, 255, 255, 0.07);
+
+  box-sizing: border-box;
+
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.kanban-card-content h4 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.kanban-card-summary {
+  display: -webkit-box;
+
+  margin: 11px 0 0;
+  overflow: hidden;
+
+  color: #bbb7c9;
+
+  font-size: 14px;
+  line-height: 1.6;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+}
+
+
+/* =========================================================
+   KANBAN CARD FOOTER
+   ========================================================= */
+
+.kanban-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 14px;
+
+  margin-top: 18px;
+  padding-top: 14px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.kanban-card-status {
+  color: #a9dfff;
+
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.kanban-card-link {
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.kanban-card-link::after {
+  display: inline-block;
+
+  margin-left: 5px;
+
+  content: "→";
+
+  transition: transform 180ms ease;
+}
+
+.kanban-card-link:hover,
+.kanban-card-link:focus-visible {
+  color: #59ddff;
+}
+
+.kanban-card-link:hover::after,
+.kanban-card-link:focus-visible::after {
+  transform: translateX(3px);
+}
+
+.kanban-card-link:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid #59ddff;
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
    TABLET
    ========================================================= */
 
+@media screen and (max-width: 1000px) {
+  .project-kanban {
+    grid-template-columns: repeat(3, minmax(280px, 1fr));
+
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+
+    padding: 4px 2px 18px;
+
+    scroll-snap-type: inline proximity;
+    scrollbar-color:
+      rgba(255, 255, 255, 0.3)
+      rgba(255, 255, 255, 0.06);
+    scrollbar-width: thin;
+  }
+
+  .kanban-column {
+    scroll-snap-align: start;
+  }
+}
+
 @media screen and (max-width: 850px) {
   .projects-page {
-    /*
-     * Allows additional space in case the mobile navigation
-     * becomes taller than the desktop navigation.
-     */
     padding: 120px 20px 80px;
   }
 
-  .projects-header h1 {
+  .projects-header h1,
+  .project-board-header h2 {
     scroll-margin-top: 120px;
   }
 
@@ -260,6 +709,10 @@
   .project-showcase-card {
     width: min(620px, 100%);
     margin: 0 auto;
+  }
+
+  .project-board-section {
+    margin-top: 90px;
   }
 }
 
@@ -277,7 +730,8 @@
     margin-bottom: 36px;
   }
 
-  .projects-header h1 {
+  .projects-header h1,
+  .project-board-header h2 {
     scroll-margin-top: 112px;
   }
 
@@ -294,6 +748,41 @@
   .project-title-pill h2 {
     font-size: 17px;
   }
+
+  .project-board-section {
+    margin-top: 78px;
+  }
+
+  .project-board-header {
+    margin-bottom: 30px;
+  }
+
+  .project-board-header p {
+    font-size: 14px;
+  }
+
+  .project-kanban {
+    grid-template-columns: repeat(3, minmax(270px, 84vw));
+    gap: 16px;
+
+    margin-right: -16px;
+    padding-right: 16px;
+  }
+
+  .kanban-column {
+    min-height: 400px;
+    padding: 15px;
+    border-radius: 18px;
+  }
+
+  .kanban-card-content {
+    padding: 16px;
+  }
+
+  .kanban-card-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
 
@@ -305,15 +794,21 @@
   .project-showcase-card,
   .project-image-frame,
   .project-image,
-  .project-title-pill {
+  .project-title-pill,
+  .kanban-card,
+  .kanban-card-image,
+  .kanban-card-link,
+  .kanban-card-link::after {
     transition: none;
   }
 
-  .project-showcase-card:hover {
+  .project-showcase-card:hover,
+  .kanban-card:hover {
     transform: none;
   }
 
-  .project-showcase-card:hover .project-image {
+  .project-showcase-card:hover .project-image,
+  .kanban-card:hover .kanban-card-image {
     transform: none;
   }
 }
