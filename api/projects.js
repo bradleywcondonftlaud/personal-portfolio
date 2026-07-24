@@ -28,22 +28,44 @@ export default async function handler(request, response) {
      * @vercel/connect is an ES module. A dynamic import
      * prevents the ERR_REQUIRE_ESM runtime error.
      */
-    const { getToken } = await import('@vercel/connect');
+    const { getTokenResponse } = await import('@vercel/connect');
 
-    const token = await getToken(
-    'salesforce/the-dreamin-roomie-connect',
-    {
+    const tokenResponse = await getTokenResponse(
+      'salesforce/the-dreamin-roomie-connect',
+      {
         subject: {
-        type: 'app',
+          type: 'app',
         },
-    }
+      }
     );
 
-    const instanceUrl = process.env.SALESFORCE_INSTANCE_URL;
+    const metadata = tokenResponse.metadata || {};
+    const claims = tokenResponse.claims || {};
+
+    /*
+     * Salesforce access tokens are valid only for the org instance
+     * that issued them. Prefer the instance URL saved alongside the
+     * connector authorization so the URL and token cannot drift apart.
+     */
+    const connectorInstanceUrl = [
+      metadata.instance_url,
+      metadata.instanceUrl,
+      metadata.instanceURL,
+      claims.instance_url,
+      claims.instanceUrl,
+    ].find(
+      (value) =>
+        typeof value === 'string' &&
+        value.trim().length > 0
+    );
+
+    const instanceUrl =
+      connectorInstanceUrl ||
+      process.env.SALESFORCE_INSTANCE_URL;
 
     if (!instanceUrl) {
       throw new Error(
-        'SALESFORCE_INSTANCE_URL is not configured'
+        'The Salesforce connector did not provide an instance URL and SALESFORCE_INSTANCE_URL is not configured'
       );
     }
 
@@ -60,7 +82,7 @@ export default async function handler(request, response) {
     const salesforceResponse = await fetch(salesforceUrl, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${tokenResponse.token}`,
         Accept: 'application/json',
       },
     });
@@ -69,7 +91,11 @@ export default async function handler(request, response) {
       const errorDetails = await salesforceResponse.text();
 
       throw new Error(
-        `Salesforce returned ${salesforceResponse.status}: ${errorDetails}`
+        `Salesforce returned ${salesforceResponse.status}: ${errorDetails}; connector=${tokenResponse.connector.uid}; instanceSource=${
+          connectorInstanceUrl ? 'connector' : 'environment'
+        }; metadataKeys=${Object.keys(metadata).join(',') || 'none'}; claimKeys=${
+          Object.keys(claims).join(',') || 'none'
+        }`
       );
     }
 
