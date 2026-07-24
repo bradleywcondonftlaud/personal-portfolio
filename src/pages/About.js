@@ -15,7 +15,7 @@ const milestones = [
     logo: '/images/timeline/cci-training-center.png',
     title: 'CCI Training Center',
     label: 'Zoho Administrator',
-    date: '2024',
+    date: 'June 2024 - July 2024',
     details: 'Designed and configured a customized Zoho CRM solution that supported the organization’s operational and customer-management requirements. Built and refined multiple modules, page layouts, fields, workflows, journey-based processes, and Deluge functions while translating business needs into a structured and maintainable CRM architecture. Worked through detailed configuration requirements to improve how information was collected, organized, updated, and accessed across the system. The implementation established more consistent processes, improved visibility into organizational activity, reduced reliance on disconnected tracking methods, and provided the organization with a more scalable foundation for managing data, workflows, and customer interactions.',
   },
   {
@@ -23,7 +23,7 @@ const milestones = [
     logo: '/images/timeline/automate-this.png',
     title: 'Automate This!',
     label: 'Featured Guest',
-    date: '2024',
+    date: 'December 2024',
     details: 'Appeared on Salesforce’s Automate This! series to demonstrate a practical automation solution and explain how Salesforce administrators can use Flow to address real operational challenges. Walked viewers through the purpose of the solution, the business problem it addressed, the design decisions behind the automation, and the way the completed process improved the experience for users. The appearance provided an opportunity to share technical knowledge with the broader Salesforce community while demonstrating an ability to explain complex automation concepts in an approachable and practical manner. This milestone also marked the beginning of increased visibility within the Salesforce ecosystem as a solution builder, educator, presenter, and community contributor.',
   },
   {
@@ -31,7 +31,7 @@ const milestones = [
     logo: '/images/timeline/serviceblazer-community.png',
     title: 'Serviceblazer Community Group',
     label: 'Community Co-Leader',
-    date: '2024 – Present',
+    date: 'December 2024 – Present',
     details: 'Selected to co-lead the Serviceblazer Community Group, helping create educational programming, facilitate professional conversations, support Salesforce practitioners, and promote knowledge sharing throughout the ecosystem. Collaborates with fellow community leaders to plan events, identify relevant topics, coordinate speakers, host discussions, and create opportunities for members to learn from one another. Helps make technical and career-focused information more accessible to administrators, consultants, service professionals, and other members of the Salesforce community. Contributed to the continued growth and recognition of an award-winning community while building a reputation as an approachable, dependable, and actively engaged leader committed to helping others strengthen their skills and advance their careers.',
   },
   {
@@ -39,7 +39,7 @@ const milestones = [
     logo: '/images/timeline/cloudfirst-labs.png',
     title: 'CloudFirst Labs',
     label: 'Salesforce Builder',
-    date: '2025',
+    date: 'March 2025 - June 2025',
     details:
       'Continue building thoughtful Salesforce solutions, exploring automation, and turning hands-on learning into useful experiences for the wider community.',
   },
@@ -64,15 +64,15 @@ const milestones = [
     logo: '/images/timeline/salesforce-admins-podcast.png',
     title: 'Salesforce Admins Podcast',
     label: 'Podcast Guest',
-    date: '2025',
+    date: 'November 2025',
     details: 'Appeared as a featured guest on the Salesforce Admins Podcast to discuss professional growth, community involvement, Salesforce automation, and lessons learned throughout a nontraditional career journey. Shared experiences related to developing Salesforce expertise, creating practical solutions, participating in the Trailblazer Community, and pursuing opportunities that increased professional visibility. Discussed the importance of continuous learning, hands-on experimentation, relationship building, and communicating the business value behind technical work. The conversation was intended to encourage Salesforce administrators to continue building, sharing their knowledge, and contributing to the ecosystem even when their career path does not follow a traditional route. The appearance expanded professional reach and reinforced a reputation as an authentic and engaged Salesforce community voice.',
   },
   {
     id: 'dreamin-roomie',
     logo: '/images/timeline/dreamin-roomie-connect.png',
     title: 'The Dreamin’ Roomie Connect',
-    label: 'Co-Creator',
-    date: '2025 – Present',
+    label: 'Founder & Product Lead',
+    date: 'June 2026 – Present',
     details: 'Founded The Dreamin’ Roomie Connect, a platform designed to help conference attendees find compatible roommates, reduce lodging expenses, and make professional events more accessible. Developed the initial product vision, defined the target audience, identified the core user experience, and began designing the technical foundation needed to support member profiles, event participation, roommate preferences, matching, messaging, notifications, authentication, and account management. Leads the platform’s product strategy, branding, user-experience design, data modeling, Salesforce architecture, security planning, and application-development approach. The project combines entrepreneurial leadership with hands-on solution design and provides an opportunity to build an original product that addresses a recognizable challenge faced by members of professional and community-driven event ecosystems.'  },
 ];
 
