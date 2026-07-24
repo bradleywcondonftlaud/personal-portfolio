@@ -35,7 +35,7 @@ export default async function handler(request, response) {
     const { getTokenResponse } = await import('@vercel/connect');
 
     const tokenResponse = await getTokenResponse(
-      'salesforce/the-dreamin-roomie-connect',
+      'login.salesforce.com/bradley-portfolio',
       {
         subject: {
           type: 'app',
