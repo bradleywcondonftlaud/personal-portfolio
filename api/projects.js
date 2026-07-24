@@ -4,13 +4,9 @@ const QUERY = `
     CaseNumber,
     Subject,
     Status,
-    Priority,
-    Public_Summary__c,
-    Project_URL__c,
-    Project_Image_URL__c
+    Priority
   FROM Case
   WHERE RecordType.DeveloperName = 'Salesforce_Project'
-    AND Show_On_Portfolio__c = TRUE
   ORDER BY LastModifiedDate DESC
   LIMIT 100
 `;
@@ -111,9 +107,9 @@ export default async function handler(request, response) {
       title: record.Subject,
       status: record.Status,
       priority: record.Priority,
-      summary: record.Public_Summary__c || '',
-      url: record.Project_URL__c || '',
-      imageUrl: record.Project_Image_URL__c || '',
+      summary: '',
+      url: '',
+      imageUrl: '',
     }));
 
     /*
