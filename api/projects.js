@@ -1,4 +1,12 @@
-const QUERY = `
+const RECORD_TYPE_QUERY = `
+  SELECT Id
+  FROM RecordType
+  WHERE SObjectType = 'Case'
+    AND DeveloperName = 'Salesforce_Project'
+  LIMIT 1
+`;
+
+const buildProjectsQuery = (recordTypeId) => `
   SELECT
     Id,
     CaseNumber,
@@ -6,7 +14,7 @@ const QUERY = `
     Status,
     Priority
   FROM Case
-  WHERE RecordType.DeveloperName = 'Salesforce_Project'
+  WHERE RecordTypeId = '${recordTypeId}'
   ORDER BY LastModifiedDate DESC
   LIMIT 100
 `;
@@ -65,37 +73,62 @@ export default async function handler(request, response) {
       );
     }
 
-    const salesforceUrl = new URL(
-      '/services/data/v67.0/query',
-      instanceUrl
-    );
-
-    salesforceUrl.searchParams.set(
-      'q',
-      QUERY.replace(/\s+/g, ' ').trim()
-    );
-
-    const salesforceResponse = await fetch(salesforceUrl, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${tokenResponse.token}`,
-        Accept: 'application/json',
-      },
-    });
-
-    if (!salesforceResponse.ok) {
-      const errorDetails = await salesforceResponse.text();
-
-      throw new Error(
-        `Salesforce returned ${salesforceResponse.status}: ${errorDetails}; connector=${tokenResponse.connector.uid}; instanceSource=${
-          connectorInstanceUrl ? 'connector' : 'environment'
-        }; metadataKeys=${Object.keys(metadata).join(',') || 'none'}; claimKeys=${
-          Object.keys(claims).join(',') || 'none'
-        }`
+    const runSalesforceQuery = async (query) => {
+      const salesforceUrl = new URL(
+        '/services/data/v67.0/query',
+        instanceUrl
       );
+
+      salesforceUrl.searchParams.set(
+        'q',
+        query.replace(/\s+/g, ' ').trim()
+      );
+
+      const salesforceResponse = await fetch(
+        salesforceUrl,
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${tokenResponse.token}`,
+            Accept: 'application/json',
+          },
+        }
+      );
+
+      if (!salesforceResponse.ok) {
+        const errorDetails =
+          await salesforceResponse.text();
+
+        throw new Error(
+          `Salesforce returned ${salesforceResponse.status}: ${errorDetails}; connector=${tokenResponse.connector.uid}; instanceSource=${
+            connectorInstanceUrl
+              ? 'connector'
+              : 'environment'
+          }; metadataKeys=${
+            Object.keys(metadata).join(',') || 'none'
+          }; claimKeys=${
+            Object.keys(claims).join(',') || 'none'
+          }`
+        );
+      }
+
+      return salesforceResponse.json();
+    };
+
+    const recordTypeData = await runSalesforceQuery(
+      RECORD_TYPE_QUERY
+    );
+    const recordTypeId = recordTypeData.records?.[0]?.Id;
+
+    if (!recordTypeId) {
+      return response.status(200).json({
+        projects: [],
+      });
     }
 
-    const data = await salesforceResponse.json();
+    const data = await runSalesforceQuery(
+      buildProjectsQuery(recordTypeId)
+    );
 
     const records = Array.isArray(data.records)
       ? data.records
