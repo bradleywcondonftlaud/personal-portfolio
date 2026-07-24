@@ -31,12 +31,12 @@ export default async function handler(request, response) {
     const { getToken } = await import('@vercel/connect');
 
     const token = await getToken(
-      'salesforce/portfolio-salesforce',
-      {
+    'salesforce/the-dreamin-roomie-connect',
+    {
         subject: {
-          type: 'app',
+        type: 'app',
         },
-      }
+    }
     );
 
     const instanceUrl = process.env.SALESFORCE_INSTANCE_URL;
